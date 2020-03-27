@@ -1,0 +1,33 @@
+:root {
+
+	--main-font-family: "Arial";
+}
+
+.Front-Page {
+  text-align: center;
+  padding-top: 10%;
+  background-color: #efe4c8;
+  height: 100%;
+  padding-bottom: 100%;
+}
+
+.Front-Page-Button {
+
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fffcfc;
+	background-color: #f24832;
+	border-radius: 10px;
+	font-family: var(--main-font-family);
+	font-size: 20px;  
+}
+
+.Front-Page-Header {
+
+	background-color: #f24832;
+	padding: 50px;
+	color: #fffcfc;
+	font-family: var(--main-font-family);
+}
