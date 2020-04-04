@@ -1,3 +1,37 @@
+
+@font-face {
+    font-family: 'open_sans_condensedLtIt';
+    src: url('fonts/opensanscondensed-lightitalic-webfont.woff2') format('woff2'),
+         url('fonts/opensanscondensed-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'open_sans_condensedlight';
+    src: url('fonts/opensanscondensed-light-webfont.woff2') format('woff2'),
+         url('fonts/opensanscondensed-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'open_sans_condensedbold';
+    src: url('fonts/opensanscondensed-bold-webfont.woff2') format('woff2'),
+         url('fonts/opensanscondensed-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 :root {
 
 	--main-font-family: "Arial";
@@ -6,28 +40,64 @@
 .Front-Page {
   text-align: center;
   padding-top: 10%;
-  background-color: #efe4c8;
+  background-color: #05386B;
   height: 100%;
-  padding-bottom: 100%;
+  padding-bottom: 50%;
+}
+
+.Front-Page-Button-Area {
+
+	background-color: #5CDB95;
+	height: 100%;
+	padding-top: 50px;
+	padding-bottom: 100%;
+}
+
+
+.Front-Page-Button-Header {
+
+	text-align: left;
 }
 
 .Front-Page-Button {
 
-	padding-left: 50px;
-	padding-right: 50px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	color: #fffcfc;
-	background-color: #f24832;
+	padding-left: 5%;
+	padding-right: 5%;
+	/*padding-top: 20px;
+	padding-bottom: 20px;*/
+	margin: 20px;
+	background-color: #EDF5E1;
 	border-radius: 10px;
+	border: 10px solid #379683;
+	box-sizing: border-box;
+	border-radius: 20px;
+	width: 405px;
+	height: 90px;
+
 	font-family: var(--main-font-family);
 	font-size: 20px;  
+	font-family: "open_sans_condensedbold";
+	font-style: normal;
+	font-weight: bold;
+	font-size: 55px;
+	line-height: 75px;
+	/* identical to box height */
+
+	text-align: center;
+
+	color: #379683;
 }
 
-.Front-Page-Header {
+.Front-Page-Title {
 
-	background-color: #f24832;
-	padding: 50px;
-	color: #fffcfc;
-	font-family: var(--main-font-family);
+	padding-top: 50px;
+	margin-bottom: 0px;
+	color: #EDF5E1;
+	font-family: "open_sans_condensedlight";
+	font-size: 80px;
+	background: linear-gradient(179.79deg,
+		#05386B 0%,
+		rgba(92, 219, 149, 0) 34.49%, 
+		rgba(92, 219, 149, 0.22619) 65.51%, 
+		#5CDB95 98.02%);
 }

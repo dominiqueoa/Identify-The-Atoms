@@ -20,19 +20,19 @@ class App extends React.Component {
     this.state = props;
   }
 
-  switchToMain() {
+  switchToScreen(fromScreen, toScreen) {
 
-    let mainScreen = document.querySelector(".Main");
-    let frontPage = document.querySelector(".Front-Page");
+    let fromPage = document.querySelector("." + fromScreen);
+    let toPage = document.querySelector("." + toScreen);
 
-    frontPage.style.display = "none";
-    mainScreen.style.display = "block";
+    fromPage.style.display = "none";
+    toPage.style.display = "block";
   }
 
   render() {
     return (
       <div className="App">
-        <FrontPage className="Front-Page" screenTransition={() => this.switchToMain()}/>
+        <FrontPage className="Front-Page" screenTransition={() => this.switchToScreen("Front-Page", "Main")}/>
         <Main className="Main" correctElement={gameInfo.correctElement} elementOptions={gameInfo.elementOptions} score={0}/>  
       </div>
     );

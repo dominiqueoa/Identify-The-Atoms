@@ -127,13 +127,15 @@ class Main extends React.Component {
           <h1 className="Main-Title">Identify The Atoms</h1>
           <h1 className="Main-Score">Score: {this.state.score}</h1>
         </div>
-        <div className="column">
-          
-          <ElementOptions elementOptions ={this.props.elementOptions} correctElement={this.props.correctElement} incrementScore={() => this.incrementScore()}/>
-        </div>
+        <div className="column-container">
+	        <div className="column">
+	          
+	          <ElementOptions elementOptions ={this.props.elementOptions} correctElement={this.props.correctElement} incrementScore={() => this.incrementScore()}/>
+	        </div>
 
-        <div className="column">
-          <img className="periodicTable" src={periodicTable} alt="Extra not meaningful" height="200" width="400"/><br/>
+	        <div className="column">
+	          <img className="periodicTable" src={periodicTable} alt="Extra not meaningful" height="200" width="400"/><br/>
+	        </div>
         </div>  
       </div>
     );
