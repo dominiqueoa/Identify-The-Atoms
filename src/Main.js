@@ -85,22 +85,36 @@ class ElementOptions extends React.Component {
 
     <div id="ElementOptions">
       <img src ={require('/home/oblackmon/Documents/Eko/identify-the-atoms/src/img/' + this.state.correctElement + '.png')} alt="Useless Information" height="200" width="200"/><br/>
+      <br/>
       <div onClick={() => this.setState({isClicked : true})}>
-        <input type="radio" id="option1" name="elements" value={this.state.elementOptions[0]} onClick = {() => this.pickElement(this.state.elementOptions[0])}/>
-        <label for="{this.state.elementOptions[0]}">{this.state.elementOptions[0]}</label><br/>
+      	<div className="column-container">
+	      	<div className="column">
+				{/*      	
+		        <input type="radio" id="option1" name="elements" value={this.state.elementOptions[0]} onClick = {() => this.pickElement(this.state.elementOptions[0])}/>
+		        <label for="{this.state.elementOptions[0]}">{this.state.elementOptions[0]}</label><br/>
 
-        <input type="radio" id="option2" name="elements" value="{this.state.elementOptions[1]}" onClick = {() => this.pickElement(this.state.elementOptions[1])}/>
-        <label for="{this.state.elementOptions[1]}">{this.state.elementOptions[1]}</label><br/>
+		        <input type="radio" id="option2" name="elements" value="{this.state.elementOptions[1]}" onClick = {() => this.pickElement(this.state.elementOptions[1])}/>
+		        <label for="{this.state.elementOptions[1]}">{this.state.elementOptions[1]}</label><br/>
+		    */}
+		    	<button className="Main-Page-Button" onClick={() => this.eventHandler()}>Hydrogen</button>
+				<br/>
+				<button className="Main-Page-Button">Helium</button>
+		    </div>
 
-        <input type="radio" id="option3" name="elements" value="{this.state.elementOptions[2]}" onClick = {() => this.pickElement(this.state.elementOptions[2])}/>
-        <label for="{this.state.elementOptions[2]}">{this.state.elementOptions[2]}</label><br/>
+		    <div className="column">
+		    	{/*
+		        <input type="radio" id="option3" name="elements" value="{this.state.elementOptions[2]}" onClick = {() => this.pickElement(this.state.elementOptions[2])}/>
+		        <label for="{this.state.elementOptions[2]}">{this.state.elementOptions[2]}</label><br/>
 
-        <input type="radio" id="option4" name="elements" value="{this.state.elementOptions[3]}" onClick = {() => this.pickElement(this.state.elementOptions[3])}/>
-        <label for="{this.state.elementOptions.element4}">{this.state.elementOptions[3]}</label><br/>
-
+		        <input type="radio" id="option4" name="elements" value="{this.state.elementOptions[3]}" onClick = {() => this.pickElement(this.state.elementOptions[3])}/>
+		        <label for="{this.state.elementOptions.element4}">{this.state.elementOptions[3]}</label><br/>
+		    	*/}
+		    	<button className="Main-Page-Button" onClick={() => this.eventHandler()}>Carbon</button>
+				<br/>
+				<button className="Main-Page-Button">Oxygen</button>
+		    </div>
+	    </div>
       </div>
-      <h1>Correct Answer: {this.state.correctElement}</h1>
-      <SubmitButton changeQuestion={() => this.changeQuestion()}/>
     </div>
     );
   }
@@ -124,20 +138,11 @@ class Main extends React.Component {
     return (
       <div className="Main">
         <div className="Main-Header">
-          <h1 className="Main-Title">Identify The Atoms</h1>
-          <h1 className="Main-Score">Score: {this.state.score}</h1>
+          <h1 className="Main-Title">Kids For Chemistry</h1>
         </div>
-        <div className="column-container">
-	        <div className="column">
-	          
-	          <ElementOptions elementOptions ={this.props.elementOptions} correctElement={this.props.correctElement} incrementScore={() => this.incrementScore()}/>
-	        </div>
-
-	        <div className="column">
-	          <img className="periodicTable" src={periodicTable} alt="Extra not meaningful" height="200" width="400"/><br/>
-	        </div>
-        </div>  
-      </div>
+        <br/>
+        <ElementOptions elementOptions ={this.props.elementOptions} correctElement={this.props.correctElement} incrementScore={() => this.incrementScore()}/>
+      </div>  
     );
   }
 }
