@@ -146,6 +146,10 @@ class Main extends React.Component {
     		<img src={testTube} className="Test-Tube"/>
     		<div className="Score">{this.state.score}</div>
         </div>
+        <div className="Timer">
+        	<div className="Timer-Fill"></div>
+        	<p className="Timer-Time">30 sec</p>
+        </div>
       </div>  
     );
   }
