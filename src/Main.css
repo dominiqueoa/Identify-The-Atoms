@@ -2,9 +2,9 @@
   text-align: center;
   background: linear-gradient(179.79deg,
     #05386B 0%,
-    rgba(92, 219, 149, 0) 40.49%, 
-    rgba(92, 219, 149, 0.22619) 75.51%, 
-    #5CDB95 100%);;
+    rgba(92, 219, 149, 0) 20.49%, 
+    rgba(92, 219, 149, 0.22619) 50.51%, 
+    #5CDB95 100%);
   height: 100%;
 }
 
@@ -21,12 +21,24 @@
 .Main-Title {
   text-align: left;
   padding-left: 20px;
-  padding-top: 20px;
+  /*padding-top: 20px;*/
   padding-bottom: 20px;
   float: left;
-  color: #fffcfc;
   width: 100%;
+  font-size: 70px;
 }
+
+
+.Main-Subtitle {
+
+  color: #05386B;
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+  padding-left: 20px;
+  font-size: 40px;
+}
+
 
 .Main-Page-Button {
 
@@ -69,6 +81,37 @@
   margin: 0%;
 }
 
+
+.Score-Box {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+
+  width: 211px;
+  height: 93px;
+  border-radius: 40px;
+  background-color: rgba(5, 56, 107, 0.15);
+
+}
+
+.Test-Tube {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+.Helper-Text {
+  color: #EDF5E1;
+  text-decoration: underline;
+}
+
+.Score {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  color: #05386B;
+  font-size: 45px;
+}
 .App-link {
   color: #61dafb;
 }
@@ -96,9 +139,10 @@
 
 #ElementOptions {
 
-  text-align: left;
-  padding-left: 45%
-
+  margin: 0px;
+  padding: 0px;
+  margin-top: 20px;
+  width: 100%;
 }
 
 #submitButton {

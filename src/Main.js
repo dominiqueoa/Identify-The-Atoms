@@ -1,5 +1,5 @@
 import React from 'react';
-import periodicTable from './img/periodicTable.jpeg';
+import testTube from './img/test-tube.svg';
 import './Main.css';
 
 class SubmitButton extends React.Component {
@@ -85,9 +85,8 @@ class ElementOptions extends React.Component {
 
     <div id="ElementOptions">
       <img src ={require('/home/oblackmon/Documents/Eko/identify-the-atoms/src/img/' + this.state.correctElement + '.png')} alt="Useless Information" height="200" width="200"/><br/>
-      <br/>
-      <div onClick={() => this.setState({isClicked : true})}>
-      	<div className="column-container">
+      <a className="Helper-Text">Need help? Click here for a periodic table!</a>
+	  	<div className="column-container" onClick={() => this.setState({isClicked : true})}>
 	      	<div className="column">
 				{/*      	
 		        <input type="radio" id="option1" name="elements" value={this.state.elementOptions[0]} onClick = {() => this.pickElement(this.state.elementOptions[0])}/>
@@ -114,8 +113,7 @@ class ElementOptions extends React.Component {
 				<button className="Main-Page-Button">Oxygen</button>
 		    </div>
 	    </div>
-      </div>
-    </div>
+     </div>
     );
   }
 }
@@ -140,8 +138,14 @@ class Main extends React.Component {
         <div className="Main-Header">
           <h1 className="Main-Title">Kids For Chemistry</h1>
         </div>
-        <br/>
+        <h2 className="Main-Subtitle">Identify The Atoms</h2>
+        <div className="Timer">
+        </div>
         <ElementOptions elementOptions ={this.props.elementOptions} correctElement={this.props.correctElement} incrementScore={() => this.incrementScore()}/>
+        <div className="Score-Box">
+    		<img src={testTube} className="Test-Tube"/>
+    		<div className="Score">{this.state.score}</div>
+        </div>
       </div>  
     );
   }
