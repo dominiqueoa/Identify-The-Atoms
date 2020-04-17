@@ -71,7 +71,7 @@ class ElementOptions extends React.Component {
 
     <div className="ElementOptions">
       <img src ={require('/home/oblackmon/Documents/Eko/identify-the-atoms/src/img/' + this.state.correctElement + '.png')} alt="Useless Information" height="200" width="200"/><br/>
-      <a className="Helper-Text">Need help? Click here for a periodic table!</a>
+      <p className="Helper-Text" onClick={this.props.openPopUp}>Need help? Click here for a periodic table!</p>
 	  	<div className="column-container">
 	      	<div className="column">
 		    	<button className="Main-Page-Button" value={this.state.elementOptions[0]} onClick = {() => this.changeQuestion(0)}>{this.state.elementOptions[0]}</button>
@@ -108,6 +108,18 @@ class Main extends React.Component {
     });
   }
 
+  closePopUp(){
+
+  	let popUp = document.querySelector(".Periodic-Table-Display");
+  	popUp.style.display = "none";
+  }
+
+  openPopUp(){
+
+  	let popUp = document.querySelector(".Periodic-Table-Display");
+  	popUp.style.display = "block";
+  }
+
   render() {
     return (
       <div className="Main">
@@ -117,7 +129,7 @@ class Main extends React.Component {
         <h2 className="Main-Subtitle">Identify The Atoms</h2>
         
     	{/*This div is devoted to the Element Options section which includes the buttons, periodic table link, and photo*/}
-        <ElementOptions elementOptions ={this.props.elementOptions} correctElement={this.props.correctElement} incrementScore={() => this.incrementScore()}/>
+        <ElementOptions elementOptions ={this.props.elementOptions} correctElement={this.props.correctElement} incrementScore={() => this.incrementScore()} openPopUp={() => this.openPopUp()}/>
         
         {/*This div is devoted to the Score section*/}
         <div className="Score-Box">
@@ -129,6 +141,15 @@ class Main extends React.Component {
         <div className="Timer">
         	<div className="Timer-Fill"></div>
         	<p className="Timer-Time">30  sec</p>
+        </div>
+        <div className="Periodic-Table-Display">
+        	{/*<img src={periodicTable} alt="Periodic Table Image"/>*/}
+        	<div className="Close-Button-Outer" onClick={() => this.closePopUp()}>
+        		<div className="Close-Button-Inner">
+        			<div className="Close-Button-X1"></div>
+        			<div className="Close-Button-X2"></div>
+        		</div>
+        	</div>
         </div>
       </div>  
     );

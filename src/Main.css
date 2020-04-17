@@ -105,7 +105,6 @@
   margin: 0%;
 }
 
-
 .Score-Box {
   position: absolute;
   top: 20%;
@@ -173,6 +172,70 @@
   min-width: 100px;
 
 }
+
+.Periodic-Table-Display {
+
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 780px;
+  height: 500px;
+  background-color: #EDF5E1;
+  border-radius: 20px;
+  display: none;
+
+}
+
+.Close-Button-Outer {
+
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #05386B;
+  border-width: 100px;
+  border-color: #05386B;
+
+}
+
+.Close-Button-Inner {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #EDF5E1;
+  border-width: 100px;
+
+}
+
+.Close-Button-X1 {
+  position: absolute;
+  background-color: #05386B;
+  width: 5px;
+  height: 60px;
+  top: 5px;
+  left: 35px;
+  transform: rotate(45deg);
+  border-radius: 20px;
+
+}
+
+.Close-Button-X2 {
+
+  position: absolute;
+  background-color: #05386B;
+  width: 5px;
+  height: 60px;
+  top: 5px;
+  left: 35px;
+  transform: rotate(-45deg);
+  border-radius: 20px;
+}
+
 .App-link {
   color: #61dafb;
 }
