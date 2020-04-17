@@ -42,7 +42,6 @@
 .Main-Title {
   text-align: left;
   padding-left: 20px;
-  /*padding-top: 20px;*/
   padding-bottom: 20px;
   float: left;
   width: 100%;
@@ -66,8 +65,6 @@
 
   padding-left: 5%;
   padding-right: 5%;
-  /*padding-top: 20px;
-  padding-bottom: 20px;*/
   margin: 20px;
   background-color: #EDF5E1;
   border-radius: 10px;
@@ -89,6 +86,11 @@
   text-align: center;
 
   color: #379683;
+}
+
+.Main-Page-Button:hover {
+  background-color: #379683;
+  color: #EDF5E1;
 }
 
 .Main-Score {
@@ -191,12 +193,12 @@
   padding: 10px;
   padding-top: 50px;
   float: left;
-  background-color: ##5cdb95;
+  background-color: #5cdb95;
   flex: 1;
   height: 100%;
 }
 
-#ElementOptions {
+.ElementOptions {
 
   margin: 0px;
   padding: 0px;
@@ -204,9 +206,3 @@
   width: 100%;
 }
 
-#submitButton {
-
-  margin: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-}

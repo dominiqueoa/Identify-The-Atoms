@@ -2,14 +2,7 @@ import React from 'react';
 import testTube from './img/test-tube.svg';
 import './Main.css';
 
-class SubmitButton extends React.Component {
 
-  render() {
-
-    return <button id="submitButton" onClick={() => this.props.changeQuestion()}>Submit!</button>;
-  }
-}
-//
 class ElementOptions extends React.Component {
   
   constructor (props){
@@ -37,6 +30,7 @@ class ElementOptions extends React.Component {
                   "Calcium"];
   }
 
+  /*Takes in an array of options and returns a randomly selected, 4 element subset of the original array*/
   generateElementOptions(elementArr) {
     var copyElementArr = Array.from(elementArr);
     var outputOptions = [];
@@ -53,66 +47,47 @@ class ElementOptions extends React.Component {
     return outputOptions;
   }
 
-  changeQuestion (){
+  /*Event Handler for what should occur when a question should change*/
+  changeQuestion (index){
 
-    if(this.state.isClicked){
-      if(this.state.selectedElement == this.state.correctElement){
-        
-        this.props.incrementScore();
-      }
-      var outputOptions = this.generateElementOptions(this.elements);
-      this.setState({
+  	if(this.state.elementOptions[index] === this.state.correctElement){
 
-        selectedElement: null,
-        isClicked : false,
-        elementOptions : outputOptions,
-        correctElement : outputOptions[Math.floor(Math.random() * 4)],
-      });
-    }
+  		this.props.incrementScore();
+  	}
+
+  	var outputOptions = this.generateElementOptions(this.elements);
+  	this.setState({
+
+    	isClicked : false,
+    	elementOptions : outputOptions,
+    	correctElement : outputOptions[Math.floor(Math.random() * 4)],
+  	});
   }
 
-  pickElement(element) {
-
-    this.setState({
-      selectedElement : element,
-    });
-  }
-
-
+  /* Returns what HTML code should be rendered to the screen*/
   render (){
 
   return (
 
-    <div id="ElementOptions">
+    <div className="ElementOptions">
       <img src ={require('/home/oblackmon/Documents/Eko/identify-the-atoms/src/img/' + this.state.correctElement + '.png')} alt="Useless Information" height="200" width="200"/><br/>
       <a className="Helper-Text">Need help? Click here for a periodic table!</a>
-	  	<div className="column-container" onClick={() => this.setState({isClicked : true})}>
+	  	<div className="column-container">
 	      	<div className="column">
-				{/*      	
-		        <input type="radio" id="option1" name="elements" value={this.state.elementOptions[0]} onClick = {() => this.pickElement(this.state.elementOptions[0])}/>
-		        <label for="{this.state.elementOptions[0]}">{this.state.elementOptions[0]}</label><br/>
-
-		        <input type="radio" id="option2" name="elements" value="{this.state.elementOptions[1]}" onClick = {() => this.pickElement(this.state.elementOptions[1])}/>
-		        <label for="{this.state.elementOptions[1]}">{this.state.elementOptions[1]}</label><br/>
-		    */}
-		    	<button className="Main-Page-Button" onClick={() => this.eventHandler()}>Hydrogen</button>
+		    	<button className="Main-Page-Button" value={this.state.elementOptions[0]} onClick = {() => this.changeQuestion(0)}>{this.state.elementOptions[0]}</button>
 				<br/>
-				<button className="Main-Page-Button">Helium</button>
+				<button className="Main-Page-Button" value={this.state.elementOptions[1]} onClick = {() => this.changeQuestion(1)}>{this.state.elementOptions[1]}</button>
 		    </div>
 
 		    <div className="column">
-		    	{/*
-		        <input type="radio" id="option3" name="elements" value="{this.state.elementOptions[2]}" onClick = {() => this.pickElement(this.state.elementOptions[2])}/>
-		        <label for="{this.state.elementOptions[2]}">{this.state.elementOptions[2]}</label><br/>
-
-		        <input type="radio" id="option4" name="elements" value="{this.state.elementOptions[3]}" onClick = {() => this.pickElement(this.state.elementOptions[3])}/>
-		        <label for="{this.state.elementOptions.element4}">{this.state.elementOptions[3]}</label><br/>
-		    	*/}
-		    	<button className="Main-Page-Button" onClick={() => this.eventHandler()}>Carbon</button>
+		    	<button className="Main-Page-Button" value={this.state.elementOptions[2]} onClick = {() => this.changeQuestion(2)}>{this.state.elementOptions[2]}</button>
 				<br/>
-				<button className="Main-Page-Button">Oxygen</button>
+				<button className="Main-Page-Button" value={this.state.elementOptions[3]} onClick = {() => this.changeQuestion(3)}>{this.state.elementOptions[3]}</button>
 		    </div>
 	    </div>
+
+		{/*For debugging purposes, displaying the correct answer*/}
+	    <h1>Correct Answer: {this.state.correctElement}</h1>
      </div>
     );
   }
@@ -125,6 +100,7 @@ class Main extends React.Component {
     this.state = props;
   }
 
+  /*Increases the score by 1*/
   incrementScore(){
 
     this.setState({
@@ -139,16 +115,20 @@ class Main extends React.Component {
           <h1 className="Main-Title">Kids For Chemistry</h1>
         </div>
         <h2 className="Main-Subtitle">Identify The Atoms</h2>
-        <div className="Timer">
-        </div>
+        
+    	{/*This div is devoted to the Element Options section which includes the buttons, periodic table link, and photo*/}
         <ElementOptions elementOptions ={this.props.elementOptions} correctElement={this.props.correctElement} incrementScore={() => this.incrementScore()}/>
+        
+        {/*This div is devoted to the Score section*/}
         <div className="Score-Box">
     		<img src={testTube} className="Test-Tube"/>
     		<div className="Score">{this.state.score}</div>
         </div>
+
+        {/*This is div is devoted to the Timer section*/}
         <div className="Timer">
         	<div className="Timer-Fill"></div>
-        	<p className="Timer-Time">30 sec</p>
+        	<p className="Timer-Time">30  sec</p>
         </div>
       </div>  
     );

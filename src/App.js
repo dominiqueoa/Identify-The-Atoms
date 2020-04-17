@@ -5,14 +5,17 @@ import Main from './Main'
 import FrontPage from './FrontPage'
 
 
+/*Core game information for managing state*/
 const gameInfo = {
   elementOptions : ["Hydrogen","Helium","Lithium","Beryllium"],
   correctElement : "Hydrogen",
   isClicked: false,
-  selectedElement : null,
   score : 0,
 };
 
+
+{/*This class functions as a controller class for the different screens of the application. 
+  All screens of the application are stored inside of this component.*/}
 class App extends React.Component {
 
   constructor(props){
@@ -20,6 +23,7 @@ class App extends React.Component {
     this.state = props;
   }
 
+  /*Function to manage navigation between different scenes*/
   switchToScreen(fromScreen, toScreen) {
 
     let fromPage = document.querySelector("." + fromScreen);

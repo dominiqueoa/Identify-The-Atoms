@@ -63,8 +63,6 @@
 
 	padding-left: 5%;
 	padding-right: 5%;
-	/*padding-top: 20px;
-	padding-bottom: 20px;*/
 	margin: 20px;
 	background-color: #EDF5E1;
 	border-radius: 10px;
@@ -88,6 +86,10 @@
 	color: #379683;
 }
 
+.Front-Page-Button:hover {
+  background-color: #379683;
+  color: #EDF5E1;
+}
 .Front-Page-Title {
 
 	padding-top: 50px;
