@@ -1,123 +1,123 @@
 import React from 'react';
 import testTube from './img/test-tube.svg';
 import './Main.css';
-
+import Util from './util.js';
 
 class ElementOptions extends React.Component {
-  
-  constructor (props){
+
+  constructor (props) {
     super(props);
     this.state = props;
-    this.elements = ["Hydrogen", 
-                  "Helium",
-                  "Lithium",
-                  "Beryllium",
-                  "Boron",
-                  "Carbon",
-                  "Nitrogen",
-                  "Oxygen",
-                  "Fluorine",
-                  "Neon",
-                  "Sodium",
-                  "Magnesium",
-                  "Aluminium",
-                  "Silicon",
-                  "Phosphorus",
-                  "Sulfur",
-                  "Chlorine",
-                  "Argon",
-                  "Potassium",
-                  "Calcium"];
+    this.elements =
+     ["Hydrogen", 
+      "Helium",
+      "Lithium",
+      "Beryllium",
+      "Boron",
+      "Carbon",
+      "Nitrogen",
+      "Oxygen",
+      "Fluorine",
+      "Neon",
+      "Sodium",
+      "Magnesium",
+      "Aluminium",
+      "Silicon",
+      "Phosphorus",
+      "Sulfur",
+      "Chlorine",
+      "Argon",
+      "Potassium",
+      "Calcium"];
+    this.numIncorrect = 0;
+    this.timer = window.setTimeout(this.props.gameOver, 30000);
   }
 
-  /*Takes in an array of options and returns a randomly selected, 4 element subset of the original array*/
-  generateElementOptions(elementArr) {
-    var copyElementArr = Array.from(elementArr);
-    var outputOptions = [];
-    var elementIdx = 0;
+  handleGuess (index) {
+    if (this.state.elementOptions[index] === this.state.correctElement) {
+      // this guess is correct
+      // increment score and transition to next question
+      this.props.incrementScore();
+      window.clearTimeout(this.timer);
 
-    for(var i = 0; i < 4; i++){
+      var outputOptions = Util.sample(this.elements, 4);
+      this.setState({
+        isClicked: false,
+        elementOptions: outputOptions,
+        correctElement: Util.sample(outputOptions, 1)[0]
+      });
+      this.numIncorrect = 0;
+      this.timer = window.setTimeout(this.props.gameOver, 30000);
 
-      elementIdx = Math.floor(Math.random() * copyElementArr.length);
-      outputOptions.push(copyElementArr[elementIdx]);
-      copyElementArr.splice(elementIdx, 1);
-
+    } else {
+      // this guess is incorrect
+      // if this is the third time, end the game
+      this.numIncorrect++;
+      if (this.numIncorrect >= 3)
+        this.props.gameOver();
     }
-
-    return outputOptions;
-  }
-
-  /*Event Handler for what should occur when a question should change*/
-  changeQuestion (index){
-
-  	if(this.state.elementOptions[index] === this.state.correctElement){
-
-  		this.props.incrementScore();
-  	}
-
-  	var outputOptions = this.generateElementOptions(this.elements);
-  	this.setState({
-
-    	isClicked : false,
-    	elementOptions : outputOptions,
-    	correctElement : outputOptions[Math.floor(Math.random() * 4)],
-  	});
   }
 
   /* Returns what HTML code should be rendered to the screen*/
-  render (){
+  render () {
+    return (
+      <div className="ElementOptions">
+        <img src={require("../src/img/" + this.state.correctElement + ".png")} alt="Element image" height="200" width="200"/><br/>
+        <p className="Helper-Text" onClick={this.props.openPopUp}>Need help? Click here for a periodic table!</p>
+        <div className="column-container">
+          <div className="column">
+            <button className="Main-Page-Button" value={this.state.elementOptions[0]} onClick = {() => this.handleGuess(0)}>{this.state.elementOptions[0]}
+              <img src={require("../src/img/drip.svg")} />
+            </button>
+            <br/>
+            <button className="Main-Page-Button" value={this.state.elementOptions[1]} onClick = {() => this.handleGuess(1)}>{this.state.elementOptions[1]}
+              <img src={require("../src/img/drip.svg")} />
+            </button>
+          </div>
 
-  return (
+          <div className="column">
+            <button className="Main-Page-Button" value={this.state.elementOptions[2]} onClick = {() => this.handleGuess(2)}>{this.state.elementOptions[2]}
+              <img src={require("../src/img/drip.svg")} />
+            </button>
+            <br/>
+            <button className="Main-Page-Button" value={this.state.elementOptions[3]} onClick = {() => this.handleGuess(3)}>{this.state.elementOptions[3]}
+              <img src={require("../src/img/drip.svg")} />
+            </button>
+          </div>
+        </div>
 
-    <div className="ElementOptions">
-      <img src ={require('/home/oblackmon/Documents/Eko/identify-the-atoms/src/img/' + this.state.correctElement + '.png')} alt="Useless Information" height="200" width="200"/><br/>
-      <p className="Helper-Text" onClick={this.props.openPopUp}>Need help? Click here for a periodic table!</p>
-	  	<div className="column-container">
-	      	<div className="column">
-		    	<button className="Main-Page-Button" value={this.state.elementOptions[0]} onClick = {() => this.changeQuestion(0)}>{this.state.elementOptions[0]}</button>
-				<br/>
-				<button className="Main-Page-Button" value={this.state.elementOptions[1]} onClick = {() => this.changeQuestion(1)}>{this.state.elementOptions[1]}</button>
-		    </div>
-
-		    <div className="column">
-		    	<button className="Main-Page-Button" value={this.state.elementOptions[2]} onClick = {() => this.changeQuestion(2)}>{this.state.elementOptions[2]}</button>
-				<br/>
-				<button className="Main-Page-Button" value={this.state.elementOptions[3]} onClick = {() => this.changeQuestion(3)}>{this.state.elementOptions[3]}</button>
-		    </div>
-	    </div>
-
-		{/*For debugging purposes, displaying the correct answer*/}
-	    <h1>Correct Answer: {this.state.correctElement}</h1>
-     </div>
+        {/*For debugging purposes, displaying the correct answer*/}
+        <h1>Correct Answer: {this.state.correctElement}</h1>
+      </div>
     );
   }
 }
-//
+
 class Main extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = props;
   }
 
-  /*Increases the score by 1*/
-  incrementScore(){
-
+  incrementScore() {
     this.setState({
-      score : this.state.score + 1,
+      score: this.state.score + 1
     });
   }
 
-  closePopUp(){
-
-  	let popUp = document.querySelector(".Periodic-Table-Display");
-  	popUp.style.display = "none";
+  closePopUp() {
+    let popUp = document.querySelector(".Periodic-Table-Display");
+    popUp.style.display = "none";
   }
 
-  openPopUp(){
+  openPopUp() {
+    let popUp = document.querySelector(".Periodic-Table-Display");
+    popUp.style.display = "block";
+  }
 
-  	let popUp = document.querySelector(".Periodic-Table-Display");
-  	popUp.style.display = "block";
+  gameOver() {
+    console.log("foo bar");
   }
 
   render() {
@@ -127,29 +127,34 @@ class Main extends React.Component {
           <h1 className="Main-Title">Kids For Chemistry</h1>
         </div>
         <h2 className="Main-Subtitle">Identify The Atoms</h2>
-        
-    	{/*This div is devoted to the Element Options section which includes the buttons, periodic table link, and photo*/}
-        <ElementOptions elementOptions ={this.props.elementOptions} correctElement={this.props.correctElement} incrementScore={() => this.incrementScore()} openPopUp={() => this.openPopUp()}/>
-        
+
+        {/*This div is devoted to the Element Options section which includes the buttons, periodic table link, and photo*/}
+        <ElementOptions
+            elementOptions={this.props.elementOptions}
+            correctElement={this.props.correctElement}
+            incrementScore={() => this.incrementScore()}
+            openPopUp={() => this.openPopUp()}
+            gameOver={() => this.gameOver()} />
+
         {/*This div is devoted to the Score section*/}
         <div className="Score-Box">
-    		<img src={testTube} className="Test-Tube"/>
-    		<div className="Score">{this.state.score}</div>
+          <img src={testTube} className="Test-Tube"/>
+          <div className="Score">{this.state.score}</div>
         </div>
 
         {/*This is div is devoted to the Timer section*/}
         <div className="Timer">
-        	<div className="Timer-Fill"></div>
-        	<p className="Timer-Time">30  sec</p>
+          <div className="Timer-Fill"></div>
+          <p className="Timer-Time">30  sec</p>
         </div>
         <div className="Periodic-Table-Display">
-        	{/*<img src={periodicTable} alt="Periodic Table Image"/>*/}
-        	<div className="Close-Button-Outer" onClick={() => this.closePopUp()}>
-        		<div className="Close-Button-Inner">
-        			<div className="Close-Button-X1"></div>
-        			<div className="Close-Button-X2"></div>
-        		</div>
-        	</div>
+          {/*<img src={periodicTable} alt="Periodic Table Image"/>*/}
+          <div className="Close-Button-Outer" onClick={() => this.closePopUp()}>
+            <div className="Close-Button-Inner">
+              <div className="Close-Button-X1"></div>
+              <div className="Close-Button-X2"></div>
+            </div>
+          </div>
         </div>
       </div>  
     );

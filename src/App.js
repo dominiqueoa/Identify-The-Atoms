@@ -7,10 +7,11 @@ import FrontPage from './FrontPage'
 
 /*Core game information for managing state*/
 const gameInfo = {
-  elementOptions : ["Hydrogen","Helium","Lithium","Beryllium"],
-  correctElement : "Hydrogen",
+  elementOptions: ["Hydrogen","Helium","Lithium","Beryllium"],
+  correctElement: "Hydrogen",
   isClicked: false,
-  score : 0,
+  score: 0,
+  numIncorrect: 0
 };
 
 
@@ -18,14 +19,13 @@ const gameInfo = {
   All screens of the application are stored inside of this component.*/}
 class App extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = props;
   }
 
   /*Function to manage navigation between different scenes*/
   switchToScreen(fromScreen, toScreen) {
-
     let fromPage = document.querySelector("." + fromScreen);
     let toPage = document.querySelector("." + toScreen);
 

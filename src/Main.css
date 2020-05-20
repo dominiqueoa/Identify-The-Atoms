@@ -1,22 +1,14 @@
-
-
 /* Timer Animation Code*/
-
 @keyframes timer {
   0% {
     height: 500px;
     top: 0%;
-
-
   }
   100% {
     height: 20px;
     top: 97%;
   }
 }
-
-
-
 
 .Main {
   text-align: center;
@@ -28,9 +20,7 @@
   height: 100%;
 }
 
-
 .Main-Header {
-
   background-color: #05386B;
   color: #fffcfc;
   width: 100%;
@@ -49,9 +39,7 @@
   margin-bottom: 0px;
 }
 
-
 .Main-Subtitle {
-
   color: #05386B;
   text-align: left;
   padding: 0px;
@@ -60,12 +48,9 @@
   font-size: 40px;
 }
 
-
 .Main-Page-Button {
-
-  padding-left: 5%;
-  padding-right: 5%;
   margin: 20px;
+  padding: 0px;
   background-color: #EDF5E1;
   border-radius: 10px;
   border: 10px solid #379683;
@@ -73,6 +58,10 @@
   border-radius: 20px;
   width: 405px;
   height: 90px;
+  box-shadow: 10px 10px 10px rgba(128, 128, 128, 0.5);
+  color: #379683;
+  text-align: center;
+  z-index: 1;
 
   font-family: var(--main-font-family);
   font-size: 20px;  
@@ -82,15 +71,22 @@
   font-size: 55px;
   line-height: 75px;
   /* identical to box height */
-
-  text-align: center;
-
-  color: #379683;
 }
-
 .Main-Page-Button:hover {
   background-color: #379683;
   color: #EDF5E1;
+  z-index: 100;
+}
+
+.Main-Page-Button img {
+  width: 405px;
+  margin-top: -10px;
+  margin-left: -10px;
+  display: none;
+}
+.Main-Page-Button:hover img {
+  z-index: 100;  /* figure out z-indexing later */
+  display: block;
 }
 
 .Main-Score {
@@ -114,7 +110,6 @@
   height: 93px;
   border-radius: 40px;
   background-color: rgba(5, 56, 107, 0.15);
-
 }
 
 .Test-Tube {
@@ -137,7 +132,6 @@
 }
 
 .Timer {
-
   position: absolute;
   left: 5%;
   top: 25%;
@@ -148,7 +142,6 @@
 }
 
 .Timer-Fill {
-
   position: absolute;
   width: 20px;
   height: 500px;
@@ -159,22 +152,18 @@
   animation-duration: 30s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-
 }
 
 .Timer-Time {
-
   color: #165899;
   position: absolute;
   bottom: 0%;
   padding-left: 40px;
   font-size: 35px;
   min-width: 100px;
-
 }
 
 .Periodic-Table-Display {
-
   position: absolute;
   top: 20%;
   left: 30%;
@@ -183,11 +172,9 @@
   background-color: #EDF5E1;
   border-radius: 20px;
   display: none;
-
 }
 
 .Close-Button-Outer {
-
   position: absolute;
   top: 20px;
   right: 20px;
@@ -197,7 +184,6 @@
   background-color: #05386B;
   border-width: 100px;
   border-color: #05386B;
-
 }
 
 .Close-Button-Inner {
@@ -209,7 +195,6 @@
   border-radius: 50%;
   background: #EDF5E1;
   border-width: 100px;
-
 }
 
 .Close-Button-X1 {
@@ -221,11 +206,9 @@
   left: 35px;
   transform: rotate(45deg);
   border-radius: 20px;
-
 }
 
 .Close-Button-X2 {
-
   position: absolute;
   background-color: #05386B;
   width: 5px;
@@ -241,7 +224,6 @@
 }
 
 .column-container {
-
   min-height: 300px;
   margin: 0 auto;
   display: flex;
@@ -262,7 +244,6 @@
 }
 
 .ElementOptions {
-
   margin: 0px;
   padding: 0px;
   margin-top: 100px;
