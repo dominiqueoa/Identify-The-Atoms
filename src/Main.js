@@ -1,11 +1,12 @@
 import React from 'react';
 import testTube from './img/test-tube.svg';
 import './Main.css';
-import Util from './util.js';
+import { Util, Timer } from './util.js';
+
 
 class ElementOptions extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = props;
     this.elements =
@@ -30,7 +31,6 @@ class ElementOptions extends React.Component {
       "Potassium",
       "Calcium"];
     this.numIncorrect = 0;
-    this.timer = window.setTimeout(this.props.gameOver, 30000);
   }
 
   handleGuess (index) {
@@ -38,7 +38,8 @@ class ElementOptions extends React.Component {
       // this guess is correct
       // increment score and transition to next question
       this.props.incrementScore();
-      window.clearTimeout(this.timer);
+      this.props.timer.reset();
+      this.numIncorrect = 0;
 
       var outputOptions = Util.sample(this.elements, 4);
       this.setState({
@@ -46,8 +47,6 @@ class ElementOptions extends React.Component {
         elementOptions: outputOptions,
         correctElement: Util.sample(outputOptions, 1)[0]
       });
-      this.numIncorrect = 0;
-      this.timer = window.setTimeout(this.props.gameOver, 30000);
 
     } else {
       // this guess is incorrect
@@ -116,10 +115,6 @@ class Main extends React.Component {
     popUp.style.display = "block";
   }
 
-  gameOver() {
-    console.log("foo bar");
-  }
-
   render() {
     return (
       <div className="Main">
@@ -133,8 +128,9 @@ class Main extends React.Component {
             elementOptions={this.props.elementOptions}
             correctElement={this.props.correctElement}
             incrementScore={() => this.incrementScore()}
-            openPopUp={() => this.openPopUp()}
-            gameOver={() => this.gameOver()} />
+            openPopUp     ={() => this.openPopUp()}
+            timer         ={this.props.timer}
+            gameOver      ={() => this.props.gameOver()} />
 
         {/*This div is devoted to the Score section*/}
         <div className="Score-Box">
@@ -145,7 +141,7 @@ class Main extends React.Component {
         {/*This is div is devoted to the Timer section*/}
         <div className="Timer">
           <div className="Timer-Fill"></div>
-          <p className="Timer-Time">30  sec</p>
+          <p id="timer-label" className="Timer-Time">30 sec</p>
         </div>
         <div className="Periodic-Table-Display">
           {/*<img src={periodicTable} alt="Periodic Table Image"/>*/}

@@ -8,8 +8,9 @@ class FrontPage extends React.Component {
     this.state = props;
   }
 
-  eventHandler() {
+  startGame() {
     this.props.screenTransition();
+    this.props.timer.reset();
   }
 
   render() {
@@ -17,7 +18,7 @@ class FrontPage extends React.Component {
       <div className="Front-Page">
         <h1 className="Front-Page-Title">Identify The Atoms</h1>
         <div className="Front-Page-Button-Area">
-          <button className="Front-Page-Button" onClick={() => this.eventHandler()}>Start</button>
+          <button className="Front-Page-Button" onClick={() => this.startGame()}>Start</button>
           <br/>
           <button className="Front-Page-Button">About</button>
         </div>

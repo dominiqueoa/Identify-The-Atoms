@@ -2,7 +2,7 @@
  *
  * This file defines some useful, all-purpose utility functions. */
 
-class Util {
+export class Util {
 
   // random integer in closed interval [a, b]
   static random_int(a, b) {
@@ -23,4 +23,43 @@ class Util {
   }
 }
 
-export {Util as default};
+export class Timer {
+
+  constructor(props) {
+    this.props = props;
+    this.makeCounter = function* makeCounter() {
+      let count = 0;
+      while(true) {
+        count++;
+        yield count;
+      }
+      return count;
+    }
+    this.counter = this.makeCounter();
+    this.ticker = window.setInterval(() => {
+      return this.props.tick(this.counter.next().value);
+    }, this.props.increment);
+    this.timer = window.setTimeout(() => {
+      window.clearInterval(this.ticker);
+      return this.props.callback();
+    }, this.props.limit);
+  }
+
+  reset() {
+    this.suspend();
+    this.counter = this.makeCounter();
+    this.ticker = window.setInterval(() => {
+      return this.props.tick(this.counter.next().value);
+    }, this.props.increment);
+    this.timer = window.setTimeout(() => {
+      window.clearInterval(this.ticker);
+      return this.props.callback();
+    }, this.props.limit);
+  }
+
+  suspend() {
+    window.clearTimeout(this.timer);
+    window.clearInterval(this.ticker);
+  }
+}
+

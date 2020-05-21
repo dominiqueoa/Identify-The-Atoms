@@ -1,40 +1,5 @@
-
-@font-face {
-    font-family: 'open_sans_condensedLtIt';
-    src: url('fonts/opensanscondensed-lightitalic-webfont.woff2') format('woff2'),
-         url('fonts/opensanscondensed-lightitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'open_sans_condensedlight';
-    src: url('fonts/opensanscondensed-light-webfont.woff2') format('woff2'),
-         url('fonts/opensanscondensed-light-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'open_sans_condensedbold';
-    src: url('fonts/opensanscondensed-bold-webfont.woff2') format('woff2'),
-         url('fonts/opensanscondensed-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 :root {
-
-	--main-font-family: "Arial";
+  /* --main-font-family: "Arial"; */
 }
 
 .Front-Page {
@@ -46,60 +11,57 @@
 }
 
 .Front-Page-Button-Area {
-
-	background-color: #5CDB95;
-	height: 100%;
-	padding-top: 50px;
-	padding-bottom: 100%;
+  background-color: #5CDB95;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 100%;
 }
 
 
 .Front-Page-Button-Header {
-
-	text-align: left;
+  text-align: left;
 }
 
 .Front-Page-Button {
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 20px;
+  background-color: #EDF5E1;
+  border-radius: 10px;
+  border: 10px solid #379683;
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 405px;
+  height: 90px;
 
-	padding-left: 5%;
-	padding-right: 5%;
-	margin: 20px;
-	background-color: #EDF5E1;
-	border-radius: 10px;
-	border: 10px solid #379683;
-	box-sizing: border-box;
-	border-radius: 20px;
-	width: 405px;
-	height: 90px;
+  /* font-family: var(--main-font-family); */
+  font-size: 20px;  
+  font-family: Kranky, "open_sans_condensedbold";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 55px;
+  line-height: 75px;
+  /* identical to box height */
 
-	font-family: var(--main-font-family);
-	font-size: 20px;  
-	font-family: "open_sans_condensedbold";
-	font-style: normal;
-	font-weight: bold;
-	font-size: 55px;
-	line-height: 75px;
-	/* identical to box height */
+  text-align: center;
 
-	text-align: center;
-
-	color: #379683;
+  color: #379683;
 }
 
 .Front-Page-Button:hover {
   background-color: #379683;
   color: #EDF5E1;
 }
-.Front-Page-Title {
 
-	padding-top: 50px;
-	margin-bottom: 0px;
-	color: #EDF5E1;
-	font-family: "open_sans_condensedlight";
-	font-size: 80px;
-	background: linear-gradient(179.79deg,
-		#05386B 0%,
-		rgba(92, 219, 149, 0) 34.49%, 
-		rgba(92, 219, 149, 0.22619) 65.51%, 
-		#5CDB95 98.02%);
+.Front-Page-Title {
+  padding-top: 50px;
+  margin-bottom: 0px;
+  color: #EDF5E1;
+  /* font-family: "open_sans_condensedlight"; */
+  font-size: 80px;
+  background: linear-gradient(179.79deg,
+  #05386B 0%,
+  rgba(92, 219, 149, 0) 34.49%, 
+  rgba(92, 219, 149, 0.22619) 65.51%, 
+  #5CDB95 98.02%);
 }
