@@ -29,6 +29,10 @@
     font-style: normal;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: Kranky, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -50,4 +54,5 @@ code {
 
 #root {
   background: #5cdb95;
+  height: 100%;
 }

@@ -1,0 +1,53 @@
+.game-over-container {
+  display: none;
+  text-align: center;
+  background: linear-gradient(179.79deg,
+    #05386B 0%,
+    rgba(92, 219, 149, 0) 20.49%, 
+    rgba(92, 219, 149, 0.22619) 50.51%, 
+    #5CDB95 100%);
+  height: 100%;
+}
+
+.game-over-congratulations {
+  color: white;
+  font-size: 300%;
+  margin: 0;
+  text-shadow:
+    #379683 1px 0px 0,
+    #379683 -1px 0px 0,
+    #379683 0px 1px 0,
+    #379683 0px -1px 0,
+    #379683 2px 0px 0,
+    #379683 -2px 0px 0,
+    #379683 0px 2px 0,
+    #379683 0px -2px 0,
+    #379683 3px 0px 0,
+    #379683 -3px 0px 0,
+    #379683 0px 3px 0,
+    #379683 0px -3px 0,
+    #379683 4px 0px 0,
+    #379683 -4px 0px 0,
+    #379683 0px 4px 0,
+    #379683 0px -4px 0,
+    #379683 5px 0px 0,
+    #379683 -5px 0px 0,
+    #379683 0px 5px 0,
+    #379683 0px -5px 0;
+  font-weight: 400;
+}
+
+.game-over-score-card {
+  margin: 10px;
+  color: #5cdb95;
+  background-color: #05386b;
+  width: 200px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+#game-over-score {
+  font-size: 300%;
+  display: inline;
+  padding-left: 30px;
+}

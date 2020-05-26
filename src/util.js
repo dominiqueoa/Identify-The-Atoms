@@ -23,17 +23,29 @@ export class Util {
   }
 }
 
+/* A flexible timer class. Usage:
+ *   var timer = new Timer({
+ *     limit:      // total duration of timer, in milliseconds
+ *     callback:   // called when timer expires (i.e. 'limit' ms have passed)
+ *                 // function () => { ... }
+ *     increment:  // milliseconds between successive timer "ticks"
+ *     tick:       // called at each "tick" of the timer with an increasing
+ *                 // value of i (starting at 1)
+ *                 // function i => { ... }
+ *   });
+ *   timer.reset(fn);  // resets the timer, calling fn () if it is not null
+ *   timer.suspend();  // stops the timer
+ */
 export class Timer {
 
   constructor(props) {
     this.props = props;
     this.makeCounter = function* makeCounter() {
       let count = 0;
-      while(true) {
+      while (true) {
         count++;
         yield count;
       }
-      return count;
     }
     this.counter = this.makeCounter();
     this.ticker = window.setInterval(() => {
@@ -45,7 +57,7 @@ export class Timer {
     }, this.props.limit);
   }
 
-  reset() {
+  reset(fn) {
     this.suspend();
     this.counter = this.makeCounter();
     this.ticker = window.setInterval(() => {
@@ -55,6 +67,8 @@ export class Timer {
       window.clearInterval(this.ticker);
       return this.props.callback();
     }, this.props.limit);
+
+    if (fn) fn ();
   }
 
   suspend() {

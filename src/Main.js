@@ -38,7 +38,15 @@ class ElementOptions extends React.Component {
       // this guess is correct
       // increment score and transition to next question
       this.props.incrementScore();
-      this.props.timer.reset();
+      this.props.timer.reset(() => {
+        var animation = document.querySelector(".Timer-Fill");
+        animation.style.animation = "none";
+        var _ = animation.offsetHeight;  // triger document reflow
+        animation.style.animation = "";
+
+        var label = document.getElementById("timer-label");
+        label.textContent = "30 sec";
+      });
       this.numIncorrect = 0;
 
       var outputOptions = Util.sample(this.elements, 4);
@@ -128,6 +136,7 @@ class Main extends React.Component {
             elementOptions={this.props.elementOptions}
             correctElement={this.props.correctElement}
             incrementScore={() => this.incrementScore()}
+            getScore      ={() => this.getScore()}
             openPopUp     ={() => this.openPopUp()}
             timer         ={this.props.timer}
             gameOver      ={() => this.props.gameOver()} />

@@ -9,6 +9,7 @@ class FrontPage extends React.Component {
   }
 
   startGame() {
+    document.getElementById("timer-label").textContent = "30 sec";  // a hack
     this.props.screenTransition();
     this.props.timer.reset();
   }

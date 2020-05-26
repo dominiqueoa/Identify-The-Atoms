@@ -3,6 +3,7 @@ import periodicTable from './img/periodicTable.jpeg';
 import './App.css';
 import Main from './Main'
 import FrontPage from './FrontPage'
+import GameOver from './GameOver'
 import { Timer } from './util'
 
 
@@ -30,7 +31,7 @@ class App extends React.Component {
         limit: 30000,
         callback: () => {
           this.timer.suspend();
-          this.gameOver();
+          this.gameOver(document.querySelector(".Score").textContent);  // hack!
         },
         increment: 1000,
         tick: i => {
@@ -46,7 +47,13 @@ class App extends React.Component {
   }
 
   gameOver() {
-    console.log("game over");
+    this.timer.suspend();
+
+    var score = document.querySelector(".Score").textContent;
+    document.querySelector(".Front-Page").style.display          = "none";
+    document.querySelector(".Main").style.display                = "none";
+    document.querySelector(".game-over-container").style.display = "block";
+    document.querySelector("#game-over-score").textContent       = score;
   }
 
   /*Function to manage navigation between different scenes*/
@@ -71,7 +78,8 @@ class App extends React.Component {
           elementOptions={gameInfo.elementOptions}
           score={0}
           timer={this.timer}
-          gameOver={this.gameOver} />  
+          gameOver={this.gameOver} />
+        <GameOver />
       </div>
     );
   }
